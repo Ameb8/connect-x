@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/connect_x.dir/src/board/board.cpp.o CMakeFiles/connect_x.dir/src/main.cpp.o -o connect_x

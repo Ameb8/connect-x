@@ -1,7 +1,6 @@
-#include <vector>
-#include <memory>
-#include <tuple>
-#include <iostream>
+
+
+#include "connect-x/board.h"
 
 // Board dimension requirements
 constexpr int MIN_WIDTH = 3;
@@ -31,6 +30,7 @@ public:
         : width(width), height(height), connect_num(connect_num), full_cols(0), board(height, std::vector<int>(width, 0))
     {
     }
+
 
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
 
@@ -118,21 +118,16 @@ private:
     int full_cols;
     std::vector<std::vector<int>> board;
 
-    Board(int width, int height, int connect_num)
-        : width(width), height(height), connect_num(connect_num), board(height, std::vector<int>(width, 0))
-    {
-    }
-
-    const bool in_bounds(int row, int col) {
+    bool in_bounds(int row, int col) {
         return row >= 0 && row < height && col >= 0 && col < width;
     }
 
-    const void iterate_pos(int* row, int* col, const tuple<int, int>& step) {
+    void iterate_pos(int* row, int* col, const std::tuple<int, int>& step) {
         *row += std::get<0>(step);
         *col += std::get<1>(step);
     }
 
-    const int count_from(int row, int col, const tuple<int, int>& step) {
+    int count_from(int row, int col, const std::tuple<int, int>& step) {
         int token = board[row][col];
 
         if(token == EMPTY)
@@ -161,3 +156,21 @@ std::ostream& operator<<(std::ostream& os, const Board& b) {
     }
     return os;
 }
+
+int main() {
+    auto board = Board::create(7, 6, 4);
+
+    if(!board) {
+        std::cout << "Failed to create board\n";
+    }
+
+    std::cout << *board;
+
+    board->move(1, 1);
+    board->move(1, 2);
+    board->move(1, 1);
+
+
+    std::cout << *board;
+}
+
