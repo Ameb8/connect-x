@@ -85,12 +85,12 @@ clean: CMakeFiles/connect_x.dir/clean
 CMakeFiles/connect_x.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=1,2,3 "Built target connect_x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target connect_x"
 .PHONY : CMakeFiles/connect_x.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/connect_x.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/connect_x.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles 0
 .PHONY : CMakeFiles/connect_x.dir/rule
@@ -102,7 +102,7 @@ connect_x: CMakeFiles/connect_x.dir/rule
 # codegen rule for target.
 CMakeFiles/connect_x.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target connect_x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target connect_x"
 .PHONY : CMakeFiles/connect_x.dir/codegen
 
 # clean rule for target.

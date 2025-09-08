@@ -86,10 +86,24 @@ CMakeFiles/connect_x.dir/src/board/board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/connect_x.dir/src/board/board.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/board/board.cpp -o CMakeFiles/connect_x.dir/src/board/board.cpp.s
 
+CMakeFiles/connect_x.dir/src/game/Game.cpp.o: CMakeFiles/connect_x.dir/flags.make
+CMakeFiles/connect_x.dir/src/game/Game.cpp.o: /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/game/Game.cpp
+CMakeFiles/connect_x.dir/src/game/Game.cpp.o: CMakeFiles/connect_x.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/connect_x.dir/src/game/Game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/connect_x.dir/src/game/Game.cpp.o -MF CMakeFiles/connect_x.dir/src/game/Game.cpp.o.d -o CMakeFiles/connect_x.dir/src/game/Game.cpp.o -c /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/game/Game.cpp
+
+CMakeFiles/connect_x.dir/src/game/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/connect_x.dir/src/game/Game.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/game/Game.cpp > CMakeFiles/connect_x.dir/src/game/Game.cpp.i
+
+CMakeFiles/connect_x.dir/src/game/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/connect_x.dir/src/game/Game.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/game/Game.cpp -o CMakeFiles/connect_x.dir/src/game/Game.cpp.s
+
 CMakeFiles/connect_x.dir/src/main.cpp.o: CMakeFiles/connect_x.dir/flags.make
 CMakeFiles/connect_x.dir/src/main.cpp.o: /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/main.cpp
 CMakeFiles/connect_x.dir/src/main.cpp.o: CMakeFiles/connect_x.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/connect_x.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/connect_x.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/connect_x.dir/src/main.cpp.o -MF CMakeFiles/connect_x.dir/src/main.cpp.o.d -o CMakeFiles/connect_x.dir/src/main.cpp.o -c /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/main.cpp
 
 CMakeFiles/connect_x.dir/src/main.cpp.i: cmake_force
@@ -100,19 +114,53 @@ CMakeFiles/connect_x.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/connect_x.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/main.cpp -o CMakeFiles/connect_x.dir/src/main.cpp.s
 
+CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o: CMakeFiles/connect_x.dir/flags.make
+CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o: /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/Evaluator.cpp
+CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o: CMakeFiles/connect_x.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o -MF CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o.d -o CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o -c /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/Evaluator.cpp
+
+CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/Evaluator.cpp > CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.i
+
+CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/Evaluator.cpp -o CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.s
+
+CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o: CMakeFiles/connect_x.dir/flags.make
+CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o: /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/NPCPlayer.cpp
+CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o: CMakeFiles/connect_x.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o -MF CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o.d -o CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o -c /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/NPCPlayer.cpp
+
+CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/NPCPlayer.cpp > CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.i
+
+CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/NPCPlayer.cpp -o CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.s
+
 # Object files for target connect_x
 connect_x_OBJECTS = \
 "CMakeFiles/connect_x.dir/src/board/board.cpp.o" \
-"CMakeFiles/connect_x.dir/src/main.cpp.o"
+"CMakeFiles/connect_x.dir/src/game/Game.cpp.o" \
+"CMakeFiles/connect_x.dir/src/main.cpp.o" \
+"CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o" \
+"CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o"
 
 # External object files for target connect_x
 connect_x_EXTERNAL_OBJECTS =
 
 connect_x: CMakeFiles/connect_x.dir/src/board/board.cpp.o
+connect_x: CMakeFiles/connect_x.dir/src/game/Game.cpp.o
 connect_x: CMakeFiles/connect_x.dir/src/main.cpp.o
+connect_x: CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o
+connect_x: CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o
 connect_x: CMakeFiles/connect_x.dir/build.make
 connect_x: CMakeFiles/connect_x.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable connect_x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pattycrowder/Documents/Alex_Documents/connect-x/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable connect_x"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/connect_x.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

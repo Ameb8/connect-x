@@ -153,6 +153,30 @@ src/board/board.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/board/board.cpp.s
 .PHONY : src/board/board.cpp.s
 
+src/game/Game.o: src/game/Game.cpp.o
+.PHONY : src/game/Game.o
+
+# target to build an object file
+src/game/Game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/game/Game.cpp.o
+.PHONY : src/game/Game.cpp.o
+
+src/game/Game.i: src/game/Game.cpp.i
+.PHONY : src/game/Game.i
+
+# target to preprocess a source file
+src/game/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/game/Game.cpp.i
+.PHONY : src/game/Game.cpp.i
+
+src/game/Game.s: src/game/Game.cpp.s
+.PHONY : src/game/Game.s
+
+# target to generate assembly for a file
+src/game/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/game/Game.cpp.s
+.PHONY : src/game/Game.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -177,6 +201,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/npc/Evaluator.o: src/npc/Evaluator.cpp.o
+.PHONY : src/npc/Evaluator.o
+
+# target to build an object file
+src/npc/Evaluator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o
+.PHONY : src/npc/Evaluator.cpp.o
+
+src/npc/Evaluator.i: src/npc/Evaluator.cpp.i
+.PHONY : src/npc/Evaluator.i
+
+# target to preprocess a source file
+src/npc/Evaluator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.i
+.PHONY : src/npc/Evaluator.cpp.i
+
+src/npc/Evaluator.s: src/npc/Evaluator.cpp.s
+.PHONY : src/npc/Evaluator.s
+
+# target to generate assembly for a file
+src/npc/Evaluator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.s
+.PHONY : src/npc/Evaluator.cpp.s
+
+src/npc/NPCPlayer.o: src/npc/NPCPlayer.cpp.o
+.PHONY : src/npc/NPCPlayer.o
+
+# target to build an object file
+src/npc/NPCPlayer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.o
+.PHONY : src/npc/NPCPlayer.cpp.o
+
+src/npc/NPCPlayer.i: src/npc/NPCPlayer.cpp.i
+.PHONY : src/npc/NPCPlayer.i
+
+# target to preprocess a source file
+src/npc/NPCPlayer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.i
+.PHONY : src/npc/NPCPlayer.cpp.i
+
+src/npc/NPCPlayer.s: src/npc/NPCPlayer.cpp.s
+.PHONY : src/npc/NPCPlayer.s
+
+# target to generate assembly for a file
+src/npc/NPCPlayer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/connect_x.dir/build.make CMakeFiles/connect_x.dir/src/npc/NPCPlayer.cpp.s
+.PHONY : src/npc/NPCPlayer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +261,18 @@ help:
 	@echo "... src/board/board.o"
 	@echo "... src/board/board.i"
 	@echo "... src/board/board.s"
+	@echo "... src/game/Game.o"
+	@echo "... src/game/Game.i"
+	@echo "... src/game/Game.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/npc/Evaluator.o"
+	@echo "... src/npc/Evaluator.i"
+	@echo "... src/npc/Evaluator.s"
+	@echo "... src/npc/NPCPlayer.o"
+	@echo "... src/npc/NPCPlayer.i"
+	@echo "... src/npc/NPCPlayer.s"
 .PHONY : help
 
 
