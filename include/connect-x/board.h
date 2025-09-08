@@ -1,6 +1,3 @@
-//
-// Created by Patty Crowder on 9/7/25.
-//
 
 #ifndef CONNECT_X_BOARD_H
 #define CONNECT_X_BOARD_H
@@ -9,6 +6,7 @@
 #include <memory>
 #include <tuple>
 #include <iostream>
+#include <utility>
 
 // Constants (you can put these in a separate constants.hpp if needed)
 constexpr int MIN_WIDTH = 3;
@@ -18,16 +16,6 @@ constexpr int MAX_HEIGHT = 100;
 constexpr int MIN_CONNECT_NUM = 3;
 constexpr int MAX_CONNECT_NUM = 10;
 
-constexpr std::tuple<int, int> UP_RIGHT(-1, 1);
-constexpr std::tuple<int, int> UP_LEFT(-1, -1);
-constexpr std::tuple<int, int> DOWN_RIGHT(1, 1);
-constexpr std::tuple<int, int> DOWN_LEFT(1, -1);
-constexpr std::tuple<int, int> RIGHT(0, 1);
-constexpr std::tuple<int, int> LEFT(0, -1);
-constexpr std::tuple<int, int> UP(-1, 0);
-constexpr std::tuple<int, int> DOWN(1, 0);
-
-constexpr int EMPTY = 0;
 
 class Board {
 public:
@@ -59,7 +47,9 @@ private:
     bool in_bounds(int row, int col);
     void iterate_pos(int* row, int* col, const std::tuple<int, int>& step);
     int count_from(int row, int col, const std::tuple<int, int>& step);
+    std::pair<std::vector<int>, std::vector<int>> get_groups(int token);
 };
 
 
 #endif //CONNECT_X_BOARD_H
+

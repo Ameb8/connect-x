@@ -7,6 +7,8 @@
 
 
 class Game {
+public:
+    Game()
 };
 
 
