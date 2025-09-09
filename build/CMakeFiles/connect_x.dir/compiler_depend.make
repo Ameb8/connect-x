@@ -1919,7 +1919,8 @@ CMakeFiles/connect_x.dir/src/main.cpp.o: /Users/pattycrowder/Documents/Alex_Docu
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/stdint.h \
-  /Users/pattycrowder/Documents/Alex_Documents/connect-x/include/connect-x/board.h
+  /Users/pattycrowder/Documents/Alex_Documents/connect-x/include/connect-x/board.h \
+  /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/Evaluator.h
 
 CMakeFiles/connect_x.dir/src/npc/Evaluator.cpp.o: /Users/pattycrowder/Documents/Alex_Documents/connect-x/src/npc/Evaluator.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
