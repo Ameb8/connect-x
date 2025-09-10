@@ -6,16 +6,16 @@
 #include <functional>
 #include <iostream>
 
+#include <../src/npc/Difficulty.h>
+
 
 class Evaluator {
     public:
-        Evaluator(std::vector<int> evalLength, std::function<int(int)> evalFromCenter, std::function<int(int)> evalMaxLen, int winLen);
+        Evaluator(Difficulty dif, int winLen);
         int getScore(const std::vector<std::vector<int>> &board, int token, int opToken);
 
     private:
-        std::vector<int> evalLength; // Base score based on length of segment
-        std::function<int(int)> evalFromCenter; // Multiplier based on distance form center of board
-        std::function<int(int)> evalMaxLen; // Function to calculate multiplier based on the max distance segment can be
+        Difficulty dif;
         int score;
         int midRow;
         int midCol;

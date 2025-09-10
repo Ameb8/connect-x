@@ -2,7 +2,7 @@
 
 #include "connect-x/board.h"
 #include "../src/npc/Evaluator.h"
-
+/*
 Evaluator* getEvaluator(Board &board) {
     std::vector<int> evalLen = {0, 1, 10, 100, 10000};
     std::function<int(int)> evalFromCenter = [](int dist) {
@@ -16,7 +16,7 @@ Evaluator* getEvaluator(Board &board) {
     return new Evaluator(evalLen, evalFromCenter, evalMaxLen, board.getConnectNum());
 
 }
-
+*/
 int main() {
     auto board = Board::create(7, 6, 4);
 
@@ -25,7 +25,7 @@ int main() {
         return 1;
     }
 
-    Evaluator *eval = getEvaluator(*board);
+    //Evaluator *eval = getEvaluator(*board);
 
     //board->move(1, 1);
     //board->move(1, 2);
@@ -41,8 +41,8 @@ int main() {
     std::cout << "Test complete\n";
     std::cout << *board;
 
-    int score = eval->getScore(board->getBoard(), 1, 2);
-    std::cout << "\n\n\n\n\nScore:\n\n" << score;
+    //int score = eval->getScore(board->getBoard(), 1, 2);
+    //std::cout << "\n\n\n\n\nScore:\n\n" << score;
 
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 3; j++) {
@@ -51,8 +51,10 @@ int main() {
         }
     }
 
-    score = eval->getScore(board->getBoard(), 1, 2);
-    std::cout << "\n\n\n\n\nScore:\n\n" << score;
+    //score = eval->getScore(board->getBoard(), 1, 2);
+    //std::cout << "\n\n\n\n\nScore:\n\n" << score;
+
+    std::cout << "\n\n\n\n\n" << *board;
 
     return 0;
 }

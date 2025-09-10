@@ -4,12 +4,13 @@
 #include "Evaluator.h"
 
 
-Evaluator::Evaluator(std::vector<int> evalLength, std::function<int(int)> evalFromCenter, std::function<int(int)> evalMaxLen, int winLen)
-    : evalLength(evalLength),
-      evalFromCenter(evalFromCenter),
-      evalMaxLen(evalMaxLen),
-        winLen(winLen)
-{}
+Evaluator::Evaluator(Difficulty dif, int winLen)
+:
+    dif(dif),
+    winLen(winLen)
+{
+
+}
 
 
 int Evaluator::getScore(const std::vector<std::vector<int>> &board, int token, int opToken) {
@@ -40,11 +41,11 @@ void Evaluator::updateSegment(int segMidRow, int segMidCol, int maxLen, int numT
     if (numTokens == 0 || maxLen < winLen)
         return; // No points
 
-    int segScore = evalLength[numTokens];
-    segScore *= evalFromCenter(distFromMid(segMidRow, segMidCol));
-    segScore *= evalMaxLen(maxLen);
+    int segScore = dif.evalLength[numTokens];
+    segScore *= dif.evalFromCenter(distFromMid(segMidRow, segMidCol));
+    segScore *= dif.evalMaxLen(maxLen);
 
-    std::cout << "\nTEST:\t" << evalLength[numTokens] << ", " << evalFromCenter(distFromMid(segMidRow, segMidCol)) << ", " << evalMaxLen(maxLen);
+    std::cout << "\nTEST:\t" << dif.evalLength[numTokens] << ", " << dif.evalFromCenter(distFromMid(segMidRow, segMidCol)) << ", " << dif.evalMaxLen(maxLen);
 
     if (token != playerToken)
         score *= -1;

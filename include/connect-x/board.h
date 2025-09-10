@@ -34,7 +34,7 @@ public:
     int& at(int row, int col);
     const int& at(int row, int col) const;
 
-    bool gameWon(int row, int col);
+    int gameWon(int row, int col);
     bool gameTie();
     int move(int col, int player);
     bool undoMove(int col);

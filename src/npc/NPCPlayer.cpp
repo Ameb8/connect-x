@@ -26,12 +26,12 @@ struct Move {
     }
 };
 
-NPCPlayer::NPCPlayer(int maxDepth, int token, Difficulty &dif):
+NPCPlayer::NPCPlayer(int maxDepth, int token, int opToken, int winLen, Difficulty dif):
     maxDepth(maxDepth),
     token(token),
-{
-    Evaluator
-}
+    opToken(opToken),
+    evaluator(std::make_unique<Evaluator>(dif, winLen))
+{ }
 
 
 
@@ -40,20 +40,10 @@ NPCPlayer::NPCPlayer(int maxDepth, int token, Difficulty &dif):
 
 
 int NPCPlayer::selectMove(Board &board) {
-    return minimax(board, true, 0).col;
+    return miniMax(board, true, 0).col;
 
 }
 
-bool NPCPlayer::evaluateBoard(std::vector<std::vector<int>> board, int token, int connect_num) {
-
-    for (int i = 0; i < board.size(); i++) {
-        int len = 0;
-        int last_token = 0;
-        for (int j = 0; j < board[i].size() - connect_num; j++) {
-
-        }
-    }
-}
 
 Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
     int curToken = token;
@@ -69,7 +59,7 @@ Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
             if (moveRow != 0) { // Valid move
                 int isWin = board.gameWon(moveRow, i);
                 int score = INT_MIN;
-                Move move = Move(INT_MIN, i)
+                Move move = Move(INT_MIN, i);
 
                 if (isWin == token) // Game won
                     move.score = INT_MAX;
@@ -80,7 +70,7 @@ Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
                 else if (depth < maxDepth) // Continue search
                     move.score = miniMax(board, false, depth + 1).score;
                 else // Evaluate current board, max depth reached
-                    move.score = evaluator.getScore(board.getBoard(), token, opToken);
+                    move.score = evaluator->getScore(board.getBoard(), token, opToken);
 
                 if (move >= bestMove) // Update max score
                     bestMove = move;
@@ -112,7 +102,7 @@ Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
                 else if (depth < maxDepth) // Continue search
                     move.score = miniMax(board, true, depth + 1).score;
                 else // Evaluate current board, max depth reached
-                    move.score = evaluator.getScore(board.getBoard(), token, opToken);
+                    move.score = evaluator->getScore(board.getBoard(), token, opToken);
 
                 if (move >= bestMove)
                     bestMove = move;
