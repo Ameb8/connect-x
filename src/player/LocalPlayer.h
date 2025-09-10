@@ -1,7 +1,7 @@
 #ifndef CONNECT_X_LOCALPLAYER_H
 #define CONNECT_X_LOCALPLAYER_H
 
-#include "connect-x/player.h"
+#include "connect-x/Player.h"
 #include <string>
 
 class LocalPlayer : public Player {
@@ -21,3 +21,5 @@ private:
 
 
 #endif //CONNECT_X_LOCALPLAYER_H
+
+

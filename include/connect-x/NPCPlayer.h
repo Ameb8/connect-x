@@ -13,7 +13,7 @@
 
 struct Move;
 
-class NPCPlayer {
+class NPCPlayer : public Player {
 public:
     NPCPlayer(int maxDepth, int token, int opToken, int winLen, Difficulty dif);
     int selectMove(Board &board) override;

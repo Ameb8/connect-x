@@ -1,6 +1,10 @@
 #include <iostream>
 
 #include "connect-x/board.h"
+#include "connect-x/Game.h"
+#include "connect-x/NPCPlayer.h"
+#include "../src/player/LocalPlayer.h"
+#include "../src/npc/Difficulty.h"
 #include "../src/npc/Evaluator.h"
 /*
 Evaluator* getEvaluator(Board &board) {
@@ -17,44 +21,16 @@ Evaluator* getEvaluator(Board &board) {
 
 }
 */
+
+void playLocalGame() {
+    LocalPlayer local("Alex");
+    NPCPlayer npc(7, 2, 1, 4, HardDifficulty);
+    Game game(local, npc, 6, 7, 4);
+    game.playGame(true, 1, 2);
+}
+
 int main() {
-    auto board = Board::create(7, 6, 4);
-
-    if(!board) {
-        std::cout << "Failed to create board\n";
-        return 1;
-    }
-
-    //Evaluator *eval = getEvaluator(*board);
-
-    //board->move(1, 1);
-    //board->move(1, 2);
-    //board->move(1, 1);
-
-    for (int i = 0; i < 7; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (i % 2 == 0)
-                board->move(i, 1);
-        }
-    }
-
-    std::cout << "Test complete\n";
-    std::cout << *board;
-
-    //int score = eval->getScore(board->getBoard(), 1, 2);
-    //std::cout << "\n\n\n\n\nScore:\n\n" << score;
-
-    for (int i = 0; i < 7; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (i % 2 == 1)
-                board->move(i, 1);
-        }
-    }
-
-    //score = eval->getScore(board->getBoard(), 1, 2);
-    //std::cout << "\n\n\n\n\nScore:\n\n" << score;
-
-    std::cout << "\n\n\n\n\n" << *board;
+    playLocalGame();
 
     return 0;
 }

@@ -33,12 +33,6 @@ NPCPlayer::NPCPlayer(int maxDepth, int token, int opToken, int winLen, Difficult
     evaluator(std::make_unique<Evaluator>(dif, winLen))
 { }
 
-
-
-
-
-
-
 int NPCPlayer::selectMove(Board &board) {
     return miniMax(board, true, 0).col;
 

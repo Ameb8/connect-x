@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include "connect-x/Game.h"
 
 Game::Game(Player &player1, Player &player2, int width, int height, int winLen):
@@ -18,7 +18,7 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     int curToken = player1Token;
     int otherToken = player2Token;
 
-    if (!player1Move) {
+    if (!player1Move) { // Determine current move;
         curPlayer = &player2;
         curToken = player2Token;
         otherPlayer = &player1;
@@ -26,11 +26,21 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     }
 
     while (!board.gameTie()) {
+        // DEBUG *******
+        std::cout << "Turn: " << curPlayer->getName() << "\nBoard:\n" << board << std::endl;
+        // END DEBUG ***
+
         // Get move from player
         int moveCol = curPlayer->selectMove(board);
         int pos = board.move(moveCol, curToken);
+        int numAttempts = 0;
 
         while (pos == -1) { // Invalid move selection
+            if (numAttempts++ == 10) {
+                otherPlayer->opponentForfeit(board);
+                curPlayer->gameLost(board);
+            }
+
             moveCol = curPlayer->retrySelectMove(board);
             pos = board.move(moveCol, curToken);
         }
@@ -40,7 +50,7 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
 
         int win = board.gameWon(pos, moveCol);
 
-        if (win == curToken) {
+        if (win == curToken) { // Game won
             curPlayer->gameWon(board);
             otherPlayer->gameLost(board);
             return;
@@ -52,7 +62,6 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     // Game tie
     curPlayer->gameTie(board);
     otherPlayer->gameTie(board);
-    }
 }
 
 

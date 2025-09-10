@@ -13,7 +13,7 @@ constexpr int EMPTY = 0;
 
 Board::Board(int width, int height, int connect_num)
     : width(width), height(height), connect_num(connect_num), full_cols(0),
-      board(height, std::vector<int>(width, EMPTY)) {}
+      piecesPlayed(0), board(height, std::vector<int>(width, EMPTY)) {}
 
 bool Board::valid_dimensions(int width, int height, int connect_num) {
     if (width < MIN_WIDTH || width > MAX_WIDTH) return false;
@@ -53,7 +53,7 @@ int Board::gameWon(int row, int col) {
 }
 
 bool Board::gameTie() {
-    return width == full_cols;
+    return piecesPlayed == width * height;
 }
 
 int Board::move(int col, int player) {
@@ -63,6 +63,7 @@ int Board::move(int col, int player) {
     for (int row = height - 1; row >= 0; --row) {
         if (board[row][col] == EMPTY) {
             board[row][col] = player;
+            piecesPlayed++;
 
             // Update full_cols if column is now full
             if (row == 0)
@@ -84,6 +85,8 @@ bool Board::undoMove(int col) {
     for (int row = 0; row < height; ++row) {
         if (board[row][col] != EMPTY) {
             board[row][col] = EMPTY;
+            piecesPlayed--;
+
             return true;
         }
     }

@@ -44,6 +44,7 @@ private:
     int height;
     int connect_num;
     int full_cols;
+    int piecesPlayed;
     std::vector<std::vector<int>> board;
 
     bool in_bounds(int row, int col);

@@ -37,7 +37,6 @@ int Evaluator::distFromMid(int segMidRow, int segMidCol) {
 }
 
 void Evaluator::updateSegment(int segMidRow, int segMidCol, int maxLen, int numTokens, int token) {
-    std::cout << "\n\nSegment:\tmaxLen: " << maxLen << ", numTokens: " << numTokens << ", dist middle: " << distFromMid(segMidRow, segMidCol);
     if (numTokens == 0 || maxLen < winLen)
         return; // No points
 
@@ -45,13 +44,10 @@ void Evaluator::updateSegment(int segMidRow, int segMidCol, int maxLen, int numT
     segScore *= dif.evalFromCenter(distFromMid(segMidRow, segMidCol));
     segScore *= dif.evalMaxLen(maxLen);
 
-    std::cout << "\nTEST:\t" << dif.evalLength[numTokens] << ", " << dif.evalFromCenter(distFromMid(segMidRow, segMidCol)) << ", " << dif.evalMaxLen(maxLen);
-
     if (token != playerToken)
         score *= -1;
 
     score += segScore;
-    std::cout << "\tScore: " << segScore;
 }
 
 
