@@ -3,7 +3,7 @@
 #ifndef CONNECT_X_GAME_H
 #define CONNECT_X_GAME_H
 
-#include "../src/game/player.h"
+#include "connect-x/Player.h"
 
 class Game {
 public:
