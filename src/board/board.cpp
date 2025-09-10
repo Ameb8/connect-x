@@ -33,34 +33,62 @@ int Board::getWidth() const { return width; }
 int Board::getHeight() const { return height; }
 int Board::getConnectNum() const { return connect_num; }
 
+const std::vector<std::vector<int>> &Board::getBoard() const {
+    return board;
+}
+
 int& Board::at(int row, int col) { return board.at(row).at(col); }
 const int& Board::at(int row, int col) const { return board.at(row).at(col); }
 
-bool Board::game_won(int row, int col) {
-    return
-        count_from(row, col, LEFT) + count_from(row, col, RIGHT) + 1 >= connect_num ||
-        count_from(row, col, UP) + count_from(row, col, DOWN) + 1 >= connect_num ||
-        count_from(row, col, UP_RIGHT) + count_from(row, col, DOWN_LEFT) + 1 >= connect_num ||
-        count_from(row, col, UP_LEFT) + count_from(row, col, DOWN_RIGHT) + 1 >= connect_num;
+int Board::gameWon(int row, int col) {
+    if (
+            count_from(row, col, LEFT) + count_from(row, col, RIGHT) + 1 >= connect_num ||
+            count_from(row, col, UP) + count_from(row, col, DOWN) + 1 >= connect_num ||
+            count_from(row, col, UP_RIGHT) + count_from(row, col, DOWN_LEFT) + 1 >= connect_num ||
+            count_from(row, col, UP_LEFT) + count_from(row, col, DOWN_RIGHT) + 1 >= connect_num
+        )
+        return board[row][col];
+
+    return EMPTY;
 }
 
-bool Board::game_tie() {
+bool Board::gameTie() {
     return width == full_cols;
 }
 
-bool Board::move(int col, int player) {
-    if (col < 0 || col >= width) return false;
+int Board::move(int col, int player) {
+    if (col < 0 || col >= width)
+        return -1;
 
-    int row = height - 1;
-    while (row >= 0 && board[row][col] == EMPTY) {
-        row--;
+    for (int row = height - 1; row >= 0; --row) {
+        if (board[row][col] == EMPTY) {
+            board[row][col] = player;
+
+            // Update full_cols if column is now full
+            if (row == 0)
+                full_cols++;
+
+            return row;
+        }
     }
 
-    if (row == height - 1) return false; // column full
+    // Column is full
+    return -1;
+}
 
-    board[row + 1][col] = player;
-    if (row == height - 2) full_cols++;
-    return true;
+
+bool Board::undoMove(int col) {
+    if (col < 0 || col >= width)
+        return false;
+
+    for (int row = 0; row < height; ++row) {
+        if (board[row][col] != EMPTY) {
+            board[row][col] = EMPTY;
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool Board::in_bounds(int row, int col) {

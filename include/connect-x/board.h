@@ -8,7 +8,6 @@
 #include <iostream>
 #include <utility>
 
-// Constants (you can put these in a separate constants.hpp if needed)
 constexpr int MIN_WIDTH = 3;
 constexpr int MAX_WIDTH = 100;
 constexpr int MIN_HEIGHT = 3;
@@ -30,12 +29,15 @@ public:
     int getHeight() const;
     int getConnectNum() const;
 
+    const std::vector<std::vector<int>> &getBoard() const;
+
     int& at(int row, int col);
     const int& at(int row, int col) const;
 
-    bool game_won(int row, int col);
-    bool game_tie();
-    bool move(int col, int player);
+    bool gameWon(int row, int col);
+    bool gameTie();
+    int move(int col, int player);
+    bool undoMove(int col);
 
 private:
     int width;

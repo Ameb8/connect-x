@@ -1,21 +1,29 @@
+
 #include <vector>
 
 #include "connect-x/board.h"
+#include "../src/npc/Evaluator.h"
 
 #ifndef CONNECT_X_NPCPLAYER_H
 #define CONNECT_X_NPCPLAYER_H
 
+struct Move;
+struct Difficulty;
 
 class NPCPlayer {
 public:
-    NPCPlayer(int depth, int token);
-    void make_move(Board* board);
+    NPCPlayer(int maxDepth, int token, int opToken, Difficulty &dif);
+    void selectMove(Board &board);
 private:
-    int depth;
+    int maxDepth;
+    int token;
+    int opToken;
+    Evaluator evaluator;
 
-    bool evaluate_board(std::vector<std::vector<int>>);
-    int minimax(Board* board, bool maximizing);
+    bool evaluateBoard(Board &board);
+    Move miniMax(Board &board, bool maximizing, int depth);
 };
 
 
 #endif //CONNECT_X_NPCPLAYER_H
+

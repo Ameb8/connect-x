@@ -1,6 +1,3 @@
-//
-// Created by Patty Crowder on 9/7/25.
-//
 
 #ifndef CONNECT_X_EVALUATOR_H
 #define CONNECT_X_EVALUATOR_H
@@ -12,22 +9,29 @@
 
 class Evaluator {
     public:
-        Evaluator(std::vector<int> eval_length, std::function<int(int)> eval_from_center, int eval_both_sides);
-        int getScore(std::vector<std::vector<int>> board, int token);
+        Evaluator(std::vector<int> evalLength, std::function<int(int)> evalFromCenter, std::function<int(int)> evalMaxLen, int winLen);
+        int getScore(const std::vector<std::vector<int>> &board, int token, int opToken);
 
     private:
-        std::vector<int> eval_length; // Base score based on length of segment
-        std::function<int(int)> eval_from_center; // Multiplier based on distance form center of board
-        int eval_both_sides; // Score multiplier when win possible from 2 directions
+        std::vector<int> evalLength; // Base score based on length of segment
+        std::function<int(int)> evalFromCenter; // Multiplier based on distance form center of board
+        std::function<int(int)> evalMaxLen; // Function to calculate multiplier based on the max distance segment can be
         int score;
+        int midRow;
+        int midCol;
+        int winLen;
+        int playerToken;
 
-        void update_score(int len, bool both_sides, int dist_center, bool isMax);
-        void update_segment(int mid_row, int mid_col, int max_len, int num_tokens);
+        void updateSegment(int mid_row, int mid_col, int max_len, int num_tokens, int token);
+        void getAllSegs(const std::vector<std::vector<int>> &board, int token, int opToken);
+        int distFromMid(int segMidRow, int segMidCol);
+        int getMiddle(int height, int width);
 
-        int getRows(std::vector<std::vector<int>> board, int token);
-        int getCols(std::vector<std::vector<int>> board, int token);
-        int getDiagUp(std::vector<std::vector<int>> board, int token);
-        int getDiagDown(std::vector<std::vector<int>> board, int token);
+        void getRow(const std::vector<int> &row, int col, int token);
+        void getRows(const std::vector<std::vector<int>> &board, int token);
+        void getCols(const std::vector<std::vector<int>> &board, int token);
+        void getDiagUp(const std::vector<std::vector<int>> &board, int token);
+        void getDiagDown(const std::vector<std::vector<int>> &board, int token);
 
 };
 
