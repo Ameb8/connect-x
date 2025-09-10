@@ -44,6 +44,22 @@ int NPCPlayer::selectMove(Board &board) {
 
 }
 
+int NPCPlayer::retrySelectMove(Board &board) {
+    return selectMove(board);
+}
+
+void NPCPlayer::gameWon(Board &) { }
+
+void NPCPlayer::gameLost(Board &) { }
+
+void NPCPlayer::gameTie(Board &) { }
+
+void NPCPlayer::opponentForfeit(Board &) { /* no-op */ }
+
+std::string NPCPlayer::getName() {
+    return "NPC";
+}
+
 
 Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
     int curToken = token;

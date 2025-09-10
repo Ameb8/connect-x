@@ -1,24 +1,4 @@
-
-/*
-class LocalPlayer : public Player {
-public:
-    explicit LocalPlayer(const std::string playerName);
-
-    int selectMove(Board &board) override;
-    int retrySelectMove(Board &board) override;
-    void gameWon(Board &board) override;
-    void gameLost(Board &board) override;
-    void gameTie(Board &board) override;
-    void opponentForfeit(Board &board) override;
-    std::string getName() override;
-private:
-    std::string playerName;
-};
-
-*/
-
 #include <iostream>
-#include <limits>
 
 #include "../src/player/LocalPlayer.h"
 
