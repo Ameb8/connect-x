@@ -54,79 +54,43 @@ std::string NPCPlayer::getName() {
     return "NPC";
 }
 
-
 Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
+    // Initialize to maximize
     int curToken = token;
+    int scoreInit = INT_MIN;
 
-    if (maximizing) {
-        Move bestMove = Move(INT_MIN, -1);
-        int maxScore = INT_MIN;
-        int nextCol = -1;
-
-        for (int i = 0; i < board.getWidth(); i++) {
-            int moveRow = board.move(i, curToken);
-
-            if (moveRow != 0) { // Valid move
-                int isWin = board.gameWon(moveRow, i);
-                int score = INT_MIN;
-                Move move = Move(INT_MIN, i);
-
-                if (isWin == token) // Game won
-                    move.score = INT_MAX;
-                else if (isWin == opToken) // Game lost
-                    move.score = INT_MIN;
-                else if (board.gameTie()) // Tied
-                    move.score = 0;
-                else if (depth < maxDepth) // Continue search
-                    move.score = miniMax(board, false, depth + 1).score;
-                else // Evaluate current board, max depth reached
-                    move.score = evaluator->getScore(board.getBoard(), token, opToken);
-
-                if (move >= bestMove) // Update max score
-                    bestMove = move;
-            }
-
-            board.undoMove(i);
-        }
-
-        return bestMove;
-    } else {
-        Move bestMove = Move(INT_MAX, -1);
-        int minScore = INT_MAX;
-        int nextCol = -1;
-
-        for (int i = 0; i < board.getWidth(); i++) {
-            int moveRow = board.move(i, opToken);
-
-            if (moveRow != 0) { // Valid move
-                int isWin = board.gameWon(moveRow, i);
-                int score = INT_MIN;
-                Move move = Move(INT_MAX, i);
-
-                if (isWin == token) // Game won
-                    move.score = INT_MAX;
-                else if (isWin == opToken) // Game lost
-                    move.score = INT_MIN;
-                else if (board.gameTie()) // Tied
-                    move.score = 0;
-                else if (depth < maxDepth) // Continue search
-                    move.score = miniMax(board, true, depth + 1).score;
-                else // Evaluate current board, max depth reached
-                    move.score = evaluator->getScore(board.getBoard(), token, opToken);
-
-                if (move <= bestMove)
-                    bestMove = move;
-            }
-
-            board.undoMove(i);
-
-        }
-
-        return bestMove;
+    if (!maximizing) { // Initialize to minimize
+        curToken = opToken;
+        scoreInit = INT_MAX;
     }
 
+    Move nextMove = Move(scoreInit, -1);
 
+    for (int i = 0; i < board.getWidth(); i++) {
+        int moveRow = board.move(i, curToken);
+
+        if (moveRow != 0) {
+            Move move = Move(scoreInit, i);
+
+            if (board.gameWon(moveRow, curToken)) { // Game won
+                move.score *= -1;
+            } else if (board.gameTie()) { // Game tie
+                move.score = 0;
+            } else if (depth < maxDepth) { // Continue search
+                move.score = miniMax(board, !maximizing, depth + 1).col;
+            } else { // Max depth reached, evaluate board
+                move.score = evaluator->getScore(board.getBoard(), token, opToken);
+            }
+
+            // Update min/max score
+            if ((maximizing && move >= nextMove) || (!maximizing && move <= nextMove))
+                nextMove = move;
+        }
+
+        board.undoMove(i);
+    }
+
+    return nextMove;
 }
-
 
 
