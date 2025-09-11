@@ -26,10 +26,6 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     }
 
     while (!board.gameTie()) {
-        // DEBUG *******
-        std::cout << "Turn: " << curPlayer->getName() << "\nBoard:\n" << board << std::endl;
-        // END DEBUG ***
-
         // Get move from player
         int moveCol = curPlayer->selectMove(board);
         int pos = board.move(moveCol, curToken);

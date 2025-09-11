@@ -96,7 +96,7 @@ Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
         int nextCol = -1;
 
         for (int i = 0; i < board.getWidth(); i++) {
-            int moveRow = board.move(i, curToken);
+            int moveRow = board.move(i, opToken);
 
             if (moveRow != 0) { // Valid move
                 int isWin = board.gameWon(moveRow, i);
@@ -114,7 +114,7 @@ Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
                 else // Evaluate current board, max depth reached
                     move.score = evaluator->getScore(board.getBoard(), token, opToken);
 
-                if (move >= bestMove)
+                if (move <= bestMove)
                     bestMove = move;
             }
 

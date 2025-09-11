@@ -1,5 +1,6 @@
 
 #include <cmath>
+#include <iostream>
 
 #include "Evaluator.h"
 
@@ -14,6 +15,7 @@ Evaluator::Evaluator(Difficulty dif, int winLen)
 
 
 int Evaluator::getScore(const std::vector<std::vector<int>> &board, int token, int opToken) {
+    score = 0;
     getAllSegs(board, token, opToken);
 
     return score;

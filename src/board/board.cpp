@@ -126,6 +126,10 @@ std::ostream& operator<<(std::ostream& os, const Board& b) {
         }
         os << "\n";
     }
+    // Col labels
+    for (int col = 0; col < b.width; ++col) {
+        os << " " << col << "  ";
+    }
     return os;
 }
 
@@ -166,3 +170,5 @@ std::pair<std::vector<int>, std::vector<int>> Board::get_groups(int token) {
 
     return {player_groups, other_groups};
 }
+
+
