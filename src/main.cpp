@@ -24,7 +24,7 @@ Evaluator* getEvaluator(Board &board) {
 
 void playLocalGame() {
     LocalPlayer local("Alex");
-    NPCPlayer npc(6, 2, 1, 4, HardDifficulty);
+    NPCPlayer npc(9, 2, 1, 4, HardDifficulty);
     Game game(local, npc, 7, 6, 4);
     game.playGame(true, 1, 2);
 }
