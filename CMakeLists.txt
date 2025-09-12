@@ -12,6 +12,8 @@ add_executable(connect_x ${SOURCES}
         src/npc/Difficulty.cpp
         src/player/LocalPlayer.cpp
         src/player/LocalPlayer.h
+        src/player/textStyle.h
+        include/connect-x/participants.h
 )
         # src/game/NPCPlayer.cpp
         # src/game/NPCPlayer.h)

@@ -6,6 +6,7 @@
 #define CONNECT_X_PLAYER_H
 
 #include "connect-x/board.h"
+#include "connect-x/participants.h"
 #include <string>
 
 
@@ -13,6 +14,7 @@ class Player {
 public:
     virtual int selectMove(Board &board) = 0;
     virtual int retrySelectMove(Board &board) = 0;
+    virtual bool gameInfo(std::vector<Participant>, int token);
     virtual void gameWon(Board &board) = 0;
     virtual void gameLost(Board &board) = 0;
     virtual void gameTie(Board &board) = 0;

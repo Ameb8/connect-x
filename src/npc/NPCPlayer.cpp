@@ -2,6 +2,7 @@
 #include "connect-x/NPCPlayer.h"
 
 #include <climits>
+#include <cstdint>
 
 struct Move {
     int score;
@@ -25,6 +26,7 @@ struct Move {
         return score >= other.score;
     }
 };
+
 
 NPCPlayer::NPCPlayer(int maxDepth, int token, int opToken, int winLen, Difficulty dif):
     maxDepth(maxDepth),

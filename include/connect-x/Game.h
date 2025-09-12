@@ -4,6 +4,7 @@
 #define CONNECT_X_GAME_H
 
 #include "connect-x/Player.h"
+#include "connect-x/participants.h"
 
 class Game {
 public:
@@ -16,6 +17,10 @@ private:
     Board board;
 
     void swapTurn(Player*& curPlayer, Player*& otherPlayer, int& curToken, int& otherToken);
+    bool outputInfo();
+    bool passInfo(Player*& player, int token) {
+
+    }
 };
 
 
