@@ -2,6 +2,7 @@
 #include "connect-x/NPCPlayer.h"
 
 #include <climits>
+#include <cstdint>
 
 struct Move {
     int score;
@@ -26,6 +27,7 @@ struct Move {
     }
 };
 
+
 NPCPlayer::NPCPlayer(int maxDepth, int token, int opToken, int winLen, Difficulty dif):
     maxDepth(maxDepth),
     token(token),
@@ -34,7 +36,7 @@ NPCPlayer::NPCPlayer(int maxDepth, int token, int opToken, int winLen, Difficult
 { }
 
 int NPCPlayer::selectMove(Board &board) {
-    return miniMax(board, true, 0).col;
+    return miniMax(board, true, 0, INT_MIN, INT_MAX).col;
 
 }
 
@@ -54,79 +56,57 @@ std::string NPCPlayer::getName() {
     return "NPC";
 }
 
-
-Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth) {
+Move NPCPlayer::miniMax(Board &board, bool maximizing, int depth, int alpha, int beta) {
+    // Initialize to maximize
     int curToken = token;
+    int scoreInit = INT_MIN;
 
-    if (maximizing) {
-        Move bestMove = Move(INT_MIN, -1);
-        int maxScore = INT_MIN;
-        int nextCol = -1;
-
-        for (int i = 0; i < board.getWidth(); i++) {
-            int moveRow = board.move(i, curToken);
-
-            if (moveRow != 0) { // Valid move
-                int isWin = board.gameWon(moveRow, i);
-                int score = INT_MIN;
-                Move move = Move(INT_MIN, i);
-
-                if (isWin == token) // Game won
-                    move.score = INT_MAX;
-                else if (isWin == opToken) // Game lost
-                    move.score = INT_MIN;
-                else if (board.gameTie()) // Tied
-                    move.score = 0;
-                else if (depth < maxDepth) // Continue search
-                    move.score = miniMax(board, false, depth + 1).score;
-                else // Evaluate current board, max depth reached
-                    move.score = evaluator->getScore(board.getBoard(), token, opToken);
-
-                if (move >= bestMove) // Update max score
-                    bestMove = move;
-            }
-
-            board.undoMove(i);
-        }
-
-        return bestMove;
-    } else {
-        Move bestMove = Move(INT_MAX, -1);
-        int minScore = INT_MAX;
-        int nextCol = -1;
-
-        for (int i = 0; i < board.getWidth(); i++) {
-            int moveRow = board.move(i, opToken);
-
-            if (moveRow != 0) { // Valid move
-                int isWin = board.gameWon(moveRow, i);
-                int score = INT_MIN;
-                Move move = Move(INT_MAX, i);
-
-                if (isWin == token) // Game won
-                    move.score = INT_MAX;
-                else if (isWin == opToken) // Game lost
-                    move.score = INT_MIN;
-                else if (board.gameTie()) // Tied
-                    move.score = 0;
-                else if (depth < maxDepth) // Continue search
-                    move.score = miniMax(board, true, depth + 1).score;
-                else // Evaluate current board, max depth reached
-                    move.score = evaluator->getScore(board.getBoard(), token, opToken);
-
-                if (move <= bestMove)
-                    bestMove = move;
-            }
-
-            board.undoMove(i);
-
-        }
-
-        return bestMove;
+    if (!maximizing) { // Initialize to minimize
+        curToken = opToken;
+        scoreInit = INT_MAX;
     }
 
+    Move nextMove = Move(scoreInit, -1);
 
+    for (int i = 0; i < board.getWidth(); i++) {
+        // Check all moves
+        int moveRow = board.move(i, curToken);
+
+        if (moveRow != -1) { // Move is valid
+            Move move = Move(scoreInit, i);
+
+            if (board.gameWon(moveRow, curToken)) { // Game won
+                move.score *= -1;
+            } else if (board.gameTie()) { // Game tie
+                move.score = 0;
+            } else if (depth < maxDepth) { // Continue search
+                move.score = miniMax(board, !maximizing, depth + 1, alpha, beta).score;
+            } else { // Max depth reached, evaluate board
+                move.score = evaluator->getScore(board.getBoard(), token, opToken);
+            }
+
+            board.undoMove(i);
+
+            if (maximizing) {
+                if (move > nextMove) { // Update NPC best move
+                    nextMove = move;
+                }
+                alpha = std::max(alpha, move.score); // Update alpha
+            } else {
+                if (move < nextMove) { // Update opponent best move
+                    nextMove = move;
+                }
+                beta = std::min(beta, move.score); // Update beta
+            }
+
+            // Prune game tree
+            if (beta <= alpha) {
+                break;
+            }
+        }
+    }
+
+    return nextMove;
 }
-
 
 

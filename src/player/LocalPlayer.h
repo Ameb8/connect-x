@@ -17,6 +17,7 @@ public:
     std::string getName() override;
 private:
     std::string playerName;
+    std::vector<Participants>;
 };
 
 

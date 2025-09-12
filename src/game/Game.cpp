@@ -12,9 +12,39 @@ void Game::swapTurn(Player*& curPlayer, Player*& otherPlayer, int& curToken, int
     std::swap(curToken, otherToken);
 }
 
+
+bool Game::outputInfo(bool moveFirst, int token1, int token2) {
+    std::vector<Participant> participants;
+
+    if (moveFirst) {
+        participants = {
+            Participant(token1, player1),
+            Participant(token2, player2)
+        };
+    } else {
+        participants = {
+            Participant(token2, player2),
+            Participant(token1, player1)
+        };
+    }
+
+    if (!player1.gameInfo(participants, token1) ||
+        !player2.gameInfo(participants, token2))
+    {
+        return false;
+    }
+
+    return true;
+}
+
+
 void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     Player *curPlayer = &player1;
     Player *otherPlayer = &player2;
+
+    if (!outputInfo(player1Move, player1Token, player2Token))
+        return;
+
     int curToken = player1Token;
     int otherToken = player2Token;
 

@@ -30,7 +30,7 @@ private:
     int opToken;
     std::unique_ptr<Evaluator> evaluator;
 
-    Move miniMax(Board &board, bool maximizing, int depth);
+    Move miniMax(Board &board, bool maximizing, int depth, int alpha, int beta);
 };
 
 
