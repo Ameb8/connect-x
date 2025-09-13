@@ -33,12 +33,16 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" AND "${CMAKE_SYSTEM_NAME}" STREQU
     )
 
     target_compile_options(game_module PRIVATE
-            -s WASM=1
-            -s MODULARIZE=1
-            -s EXPORT_NAME="createModule"
-            -s ALLOW_MEMORY_GROWTH=1
-            -s ENVIRONMENT=web
             -O2
+    )
+
+    target_link_options(game_module PRIVATE
+            "--bind"
+            "-sWASM=1"
+            "-sMODULARIZE=1"
+            "-sEXPORT_NAME=createModule"
+            "-sALLOW_MEMORY_GROWTH=1"
+            "-sENVIRONMENT=web"
     )
 else()
     message(STATUS "Building native")

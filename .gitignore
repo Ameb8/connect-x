@@ -1,7 +1,10 @@
 .env
+.DS_Store
 
 /.vscode/
 engine/build
 engine/cmake-build-debug
 /cmake-build-debug
 /.idea
+/build-native
+/build-wasm

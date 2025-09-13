@@ -34,10 +34,7 @@ private:
     Board board;
 
     void swapTurn(Player*& curPlayer, Player*& otherPlayer, int& curToken, int& otherToken);
-    bool outputInfo();
-    bool passInfo(Player*& player, int token) {
 
-    }
 };
 
 
