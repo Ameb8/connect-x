@@ -1,7 +1,4 @@
-//
-// Created by Patty Crowder on 9/11/25.
-//
-
+/*
 #ifndef CONNECT_X_PARTICIPANTS_H
 #define CONNECT_X_PARTICIPANTS_H
 
@@ -16,3 +13,5 @@ struct Participant {
 };
 
 #endif //CONNECT_X_PARTICIPANTS_H
+
+*/

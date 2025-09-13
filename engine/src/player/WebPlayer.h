@@ -4,7 +4,8 @@
 #include "connect-x/Player.h"
 #include <string>
 #include <functional>
-#include <emscripten/bind.h>
+
+//#include <emscripten/bind.h>
 
 class WebPlayer : public Player {
 public:
@@ -30,7 +31,6 @@ public:
     std::string getName() override;
 private:
     std::string playerName;
-    std::vector<Participants>;
 
     MoveFn onSelectMove = nullptr;
     MoveFn onRetryMove = nullptr;

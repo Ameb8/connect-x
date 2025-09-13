@@ -1,6 +1,6 @@
 #include "WebPlayer.h"
 
-WebPlayer::WebPlayer(const std::string& name) : playerName(name) {}
+WebPlayer::WebPlayer(const std::string name) : playerName(name) {}
 
 void WebPlayer::setCallbacks(MoveFn selectMoveFn,
                              MoveFn retryMoveFn,

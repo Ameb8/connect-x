@@ -11,12 +11,12 @@ enum class Difficulty {
     Easy,
     Medium,
     Hard
-}
+};
 
 struct GameConfig {
     Difficulty diff;
 
-}
+};
 
 class LocalGame {
 public:
@@ -24,9 +24,9 @@ public:
 
 private:
     Difficulty difficulty;
-    Color playerTokColor;
+    // Color playerTokColor;
 
-    bool makeMove(int col)
+    bool makeMove(int col);
 };
 
 

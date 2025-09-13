@@ -1,6 +1,8 @@
 #include <iostream>
 #include "connect-x/Game.h"
-#include "connect-x/WebPlayer.h"
+
+
+#include "player/WebPlayer.h"
 #include "connect-x/NPCPlayer.h"
 
 Game::Game(Player &player1, Player &player2, int width, int height, int winLen):
@@ -14,7 +16,7 @@ void Game::swapTurn(Player*& curPlayer, Player*& otherPlayer, int& curToken, int
     std::swap(curToken, otherToken);
 }
 
-
+/*
 bool Game::outputInfo(bool moveFirst, int token1, int token2) {
     std::vector<Participant> participants;
 
@@ -38,14 +40,14 @@ bool Game::outputInfo(bool moveFirst, int token1, int token2) {
 
     return true;
 }
-
+*/
 
 void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     Player *curPlayer = &player1;
     Player *otherPlayer = &player2;
 
-    if (!outputInfo(player1Move, player1Token, player2Token))
-        return;
+    //if (!outputInfo(player1Move, player1Token, player2Token))
+        //return;
 
     int curToken = player1Token;
     int otherToken = player2Token;
@@ -94,7 +96,7 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
 
 
 
-static void Game::setCallbacks(std::string name,
+void Game::webGame(std::string name,
               MoveFn selectMoveFn,
               MoveFn retryMoveFn,
               VoidFn winFn,
@@ -110,7 +112,7 @@ static void Game::setCallbacks(std::string name,
     NPCPlayer npc(4, 2, 1, 4, HardDifficulty);
 
     // Create Game object
-    Game &game(webPlayer, npc, 7, 6, 4);
+    Game game(webPlayer, npc, 7, 6, 4);
 
     // Initiate game loop
     game.playGame(true, 1, 2);

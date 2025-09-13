@@ -1,3 +1,4 @@
+/*
 #include <emscripten/bind.h>
 #include "connect-x/WebPlayer.h"
 #include "connect-x/Board.h"
@@ -17,3 +18,4 @@ EMSCRIPTEN_BINDINGS(game_bindings) {
     class_<Game>("Game")
         .class_function("webGame", &Game::webGame);
 }
+*/
