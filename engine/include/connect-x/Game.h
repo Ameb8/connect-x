@@ -10,7 +10,13 @@ class Game {
 public:
     Game(Player &player1, Player &player2, int width, int height, int winLen);
     void playGame(bool player1Move, int player1Token, int player2Token);
-
+    static void setCallbacks(std::string name,
+                  MoveFn selectMoveFn,
+                  MoveFn retryMoveFn,
+                  VoidFn winFn,
+                  VoidFn loseFn,
+                  VoidFn tieFn,
+                  VoidFn forfeitFn);
 private:
     Player &player1;
     Player &player2;

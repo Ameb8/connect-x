@@ -1,5 +1,7 @@
 #include <iostream>
 #include "connect-x/Game.h"
+#include "connect-x/WebPlayer.h"
+#include "connect-x/NPCPlayer.h"
 
 Game::Game(Player &player1, Player &player2, int width, int height, int winLen):
     player1(player1),
@@ -90,6 +92,30 @@ void Game::playGame(bool player1Move, int player1Token, int player2Token) {
     otherPlayer->gameTie(board);
 }
 
+
+
+static void Game::setCallbacks(std::string name,
+              MoveFn selectMoveFn,
+              MoveFn retryMoveFn,
+              VoidFn winFn,
+              VoidFn loseFn,
+              VoidFn tieFn,
+              VoidFn forfeitFn)
+{
+    // Create web player
+    WebPlayer webPlayer("Alex");
+    webPlayer.setCallbacks(selectMoveFn, retryMoveFn, winFn, loseFn, tieFn, forfeitFn);
+
+    // Create npc
+    NPCPlayer npc(4, 2, 1, 4, HardDifficulty);
+
+    // Create Game object
+    Game &game(webPlayer, npc, 7, 6, 4);
+
+    // Initiate game loop
+    game.playGame(true, 1, 2);
+
+}
 
 
 
